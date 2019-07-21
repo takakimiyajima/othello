@@ -1,5 +1,6 @@
 # coding=utf-8
-from const import *
+from const import BLACK
+from const import WHITE
 from othello import OthelloBoard
 
 

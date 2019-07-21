@@ -1,12 +1,10 @@
 # coding=utf-8
 from const import *
 
+
 class OthelloBoard(object):
 
     def __init__(self):
-        WHITE = 0
-        BLACK = 1
-        BOARD_SIZE = 8
         # 2次元リストを生成する
         # 各要素の初期値はNone
         self.cells = []
