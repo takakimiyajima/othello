@@ -2,6 +2,7 @@
 from const import BLACK
 from const import WHITE
 from othello import OthelloBoard
+import re
 
 
 class Game(OthelloBoard):
@@ -98,6 +99,15 @@ if __name__ == '__main__':
         game.show_board()
         print("player: " + player_name)
         print("put to: " + str(possible))
-        index = int(input("choose: "))
 
-        game.put_disk(*possible[index])
+        while(True):
+            index = input("choose: ")
+            if re.match(r'^\d+?', index):
+                index = int(index)
+                if len(possible) < index:
+                    print("その値は指定できません")
+                else:
+                    game.put_disk(*possible[index])
+                    break
+            else:
+                print("数字を指定してください")
