@@ -81,6 +81,7 @@ class OthelloBoard(object):
                     # 方向 × 深さ(距離)を要求座標に加算し直線的な探査をする
                     rx = x + (dx * depth)
                     ry = y + (dy * depth)
+                    # print(f'y: {ry}    x: {rx}\n')
 
                     # 調べる座標(rx, ry)がボードの範囲内ならば
                     if 0 <= rx < BOARD_SIZE and 0 <= ry < BOARD_SIZE:
@@ -90,7 +91,8 @@ class OthelloBoard(object):
                         if request is None:
                             break
 
-                        if request == player:  # 自分の石が見つかったとき
+                        # 自分の石が見つかったとき
+                        if request == player:
                             if tmp != []:      # 探査した範囲内に獲得可能な石があれば
                                 flippable.extend(tmp) # flippableに追加
                         # 相手の石が見つかったとき
@@ -130,8 +132,16 @@ class OthelloBoard(object):
             for y in range(BOARD_SIZE):
                 if self.cells[y][x] is not None:
                     continue
+
                 if self.list_flippable_disks(x, y, player) == []:
                     continue
                 else:
                     possible.append((x, y))
+
         return possible
+
+if __name__ == "__main__":
+    board = OthelloBoard()
+    board.show_board()
+    board.put_disk(3, 2, BLACK)
+    board.show_board()
