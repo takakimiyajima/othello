@@ -1,13 +1,12 @@
 # coding=utf-8
-
-WHITE = 0
-BLACK = 1
-BOARD_SIZE = 8
-
+from const import *
 
 class OthelloBoard(object):
 
     def __init__(self):
+        WHITE = 0
+        BLACK = 1
+        BOARD_SIZE = 8
         # 2次元リストを生成する
         # 各要素の初期値はNone
         self.cells = []
@@ -138,10 +137,3 @@ class OthelloBoard(object):
                 else:
                     possible.append((x, y))
         return possible
-
-
-if __name__ == '__main__':
-    board = OthelloBoard()
-    board.show_board()
-    board.put_disk(3, 2, BLACK)
-    board.show_board()
